@@ -4,9 +4,9 @@ server:
     uri-encoding: UTF-8
     max-threads: 1000
     min-spare-threads: 30
-  port: 8080
+  port: 8089
   servlet:
-    context-path: /renren-admin
+    context-path: /
 
 spring:
   profiles:
@@ -70,3 +70,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     call-setters-on-nulls: true
+
+logging:
+  path: ./logs
