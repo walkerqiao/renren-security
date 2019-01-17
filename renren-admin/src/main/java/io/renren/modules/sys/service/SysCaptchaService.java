@@ -14,35 +14,31 @@
  * the License.
  */
 
-package io.renren.modules.sys.dao;
+package io.renren.modules.sys.service;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import io.renren.modules.sys.entity.SysUserEntity;
+import com.baomidou.mybatisplus.service.IService;
+import io.renren.modules.sys.entity.SysCaptchaEntity;
 
-import java.util.List;
+import java.awt.image.BufferedImage;
 
 /**
- * 系统用户
- * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年9月18日 上午9:34:11
+ * 验证码
+ *
+ * @author Mark sunlightcs@gmail.com
+ * @since 2.0.0 2018-02-10
  */
-public interface SysUserDao extends BaseMapper<SysUserEntity> {
-	
-	/**
-	 * 查询用户的所有权限
-	 * @param userId  用户ID
-	 */
-	List<String> queryAllPerms(Long userId);
-	
-	/**
-	 * 查询用户的所有菜单ID
-	 */
-	List<Long> queryAllMenuId(Long userId);
+public interface SysCaptchaService extends IService<SysCaptchaEntity> {
 
-	/**
-	 * 根据用户名，查询系统用户
-	 */
-	SysUserEntity queryByUserName(String username);
+    /**
+     * 获取图片验证码
+     */
+    BufferedImage getCaptcha(String uuid);
+
+    /**
+     * 验证码效验
+     * @param uuid  uuid
+     * @param code  验证码
+     * @return  true：成功  false：失败
+     */
+    boolean validate(String uuid, String code);
 }

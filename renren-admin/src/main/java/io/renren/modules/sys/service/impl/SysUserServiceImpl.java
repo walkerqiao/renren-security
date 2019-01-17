@@ -82,6 +82,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
+	public SysUserEntity queryByUserName(String username) {
+		return baseMapper.queryByUserName(username);
+	}
+
+	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void save(SysUserEntity user) {
 		user.setCreateTime(new Date());
